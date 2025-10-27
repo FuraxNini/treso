@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { plaidClient } from '@/lib/plaid'
-import { supabase } from '@/lib/supabase'
+import { Products, CountryCode } from 'plaid'
 
 export async function POST(request: Request) {
   try {
@@ -19,8 +19,8 @@ export async function POST(request: Request) {
         client_user_id: userId,
       },
       client_name: 'Treso',
-      products: ['transactions'],
-      country_codes: ['FR', 'US'],
+      products: [Products.Transactions],
+      country_codes: [CountryCode.Fr, CountryCode.Us],
       language: 'fr',
       webhook: process.env.PLAID_WEBHOOK_URL,
     })
